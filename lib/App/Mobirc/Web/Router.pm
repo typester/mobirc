@@ -15,4 +15,6 @@ connect 'ajax/:action'             => { controller => 'Ajax' };
 connect 'mobile/:action'           => { controller => 'Mobile' };
 connect 'static/:filename'         => { controller => 'Static', action => 'deliver' };
 
+connect 'api/:action' => { controller => 'API' };
+
 1;
