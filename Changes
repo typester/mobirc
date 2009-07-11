@@ -1,0 +1,193 @@
+1.99_02
+
+    2.00 RC2
+
+    - fixed f*cking utf8 flag related bug.(reported by otsune++)
+    - rebirth middleware support
+    - bump up version:
+        Mouse                 0.16
+        YAML                  0.68
+        HTTP::MobileAttribute 0.13
+        HTTP::Engine          0.1.2
+        HTTP::Session         0.29
+    - added deps:
+        MouseX::Types 0.01
+    - bump up jQuery version 1.2.6 => 1.3.1
+
+1.99_01
+
+    ready to 2.00
+
+    - configuration file is moved to ini from YAML
+    - import H::SQ::DoCoMoGUID for docomo phones
+    - load HTMLFilter::DoCoMoCSS and MessageBodyFilter::IRCColor automatically
+
+1.08_02
+
+    - oops. miss..
+
+1.08_01
+
+    - use Mouse instead of Moose
+    - less deps
+        - don't depend to Data::Visitor::Encode
+        - don't depend to XML::LibXML
+        - don't depend to HTTP::MobilAgent
+        - don't depend to String::TT
+        - don't depend to HTML::Entities::ConvertPictograms
+    - purge cp932 support
+    - less memory
+    - load two plugins automatically
+        HTMLFilter::DoCoMoCSS
+        MessageBodyFilter::IRCColor
+    - show http server's banner at startup
+    - use HTML::TreeBuilder::XPath instead of XML::LibXML
+      (for less deps for XS)
+    - use T::MicroTemplate, instead of Template::Declare
+      (designer friendly, less memory, fast)
+    - don't depend to Proc::Daemon
+    - config.httpd.* was moved to config.global.*
+    - move repo to github
+    - use HTTP::MobileAttribute instead of HTTP::MobileAgent
+    - purge HTMLFilter/ConvertPictograms plugin.
+    - use MD5 instead of SHA1 for generate session key
+    - purge Plugin::GPS
+
+1.07
+
+    - change authentication flow
+    - use HTTP::Session
+    - Plugin::Component::Twitter: deprecated
+    - better iphone mode(retlet++)
+
+1.06
+
+    - bump up deps to PoCoIRC 5.88
+      remove quick & dirty hack for
+      http://rt.cpan.org/Ticket/Display.html?id=38773
+      because this bug fixed at PoCoIRC 5.88
+      Bingos++ # fast response
+
+1.05
+
+    - use HTTP::Engine
+    - depended to POE::Component::IRC 5.86
+    - quick & dirty bug fix for
+      http://rt.cpan.org/Ticket/Display.html?id=38773
+
+1.04
+
+    - no Compat
+    - use HTTP::Engine 0.0.14
+
+1.03
+
+    - rebirth recent_log_per_page(by hirose31++)
+    - updated dependencies
+      Data::Visitor::Encode
+      Template
+    - use HTTP::Engine::Compat
+
+1.02
+
+    - added iPhone mode(contributed by retlet++)
+    - added http_link_target option for Plugin::MessageBodyFilter::Clickable
+      (contributed by aerith++)
+    - depend to latest version of Moose(0.48 => 0.54)
+
+1.01
+
+    - Plugin::HTMLFilter::DoCoMoCSS:
+      bug fixed.
+      this module does not working... broken in 0.99_01.
+      (reported by kga++ and patch by chiba++)
+   - generate valid xhtml
+   - depend to HTTP::Engine 0.0.11(0.0.10 is borken =( )
+
+1.00
+
+    - MAJOR VERSION UP!
+
+0.99_06
+
+    - THIS IS DEVELOPER RELEASE!
+    - irssi support
+
+0.99_05
+
+    - THIS IS DEVELOPER RELEASE!
+    - support japanese channel
+    - fixed some dependencies
+    - added new plugin: ChannelPageParts
+
+0.99_04
+
+    - THIS IS DEVELOPER RELEASE!
+    - App::Mobirc::HTTPD => App::Mobirc::Plugin::Component::HTTPD
+    - bug fixed around Authorizer::BasicAuth
+    - rebirth the mobile-ajax with T::D
+
+0.99_03
+
+    - THIS IS DEVELOPER RELEASE!
+    - nick group feature was moved core to Plugin::HTMLFilter::NickGroup
+    - App::Mobirc::HTTPD::* => App::Mobirc::Web::*
+    - HTMLFilter::DoCoMoCSS is now works well
+
+0.99_02
+
+    - THIS IS DEVELOPER RELEASE!
+    - Plugin::HTMLFilter::DoCoMoCSS was broken :(
+    - use MooseX::Plaggerize!
+    -- easy to write plugins.
+    -- maintenable plugins!
+    - Plugin::HTMLFilter::StickyTime was renamed to Plugin::StickyTime
+    -- and load automatically
+    - added many test cases.
+    - Plugin::Component::XMPP is no longer supported
+    -- you can use XIRCD!
+
+0.99_01
+
+    - THIS IS DEVELOPER RELEASE!
+    - some feature is broken(e.g. DoCoMoCSS)
+    - this release makes more maintenable code, not feature enhancement release.
+    -- more mooooooooooooooooooooose
+    -- use HTTP::Engine
+    -- use HTTPx::Dispatcher
+    -- use Template::Declare
+
+0.11
+
+    (no feature changes)
+    - no singleton
+
+0.10
+
+    - use Mooooooooooooooooose
+    - added Authorizer::DoCoMoGUID by walf443++
+    - fixed dependencies.
+
+0.06
+
+    - fixed some tests.
+    - fixed dependencies
+
+0.05
+
+    - (SECURITY FIX)fixed xss(http://coderepos.org/share/changeset/6204)
+    - use more pictograms in mobile template.
+    - give accesskey="9" to clear_all_unread.
+    - added App/Mobirc/Plugin/DocRoot.pm
+    - well formed html
+
+0.04
+
+    - fixed docroot related bug.fixed by hirose31++
+    - added documents.
+    - added tests
+
+0.03
+
+    initial release to CPAN.
+

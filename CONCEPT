@@ -1,0 +1,14 @@
+■core concept
+- clean code
+- use some CPAN modules.
+
+■release plan
+- release some 0.99_xx
+- mile stone for 1.00
+-- DocRoot の完全分離
+--- ajax の script タグ
+-- validate_hook を、もうちょいなんとかかっこよく実装したい。
+-- add more documents
+-- mobile-ajax の recent pain をなおす
+-- mobile-ajax を実機で動作確認する
+

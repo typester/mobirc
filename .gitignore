@@ -1,0 +1,13 @@
+config.yaml
+config.ini
+META.yml
+Makefile
+foo.txt
+core
+MANIFEST
+*.swp
+config.ini
+*.swo
+inc/
+blib/
+pm_to_blib
