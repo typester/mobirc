@@ -18,7 +18,7 @@ sub render_channel {
 
     render_json({
         name     => $channel->name,
-        topic    => $_->topic,
+        topic    => $channel->topic,
         messages => [map +{
             nick       => $_->who,
             nick_class => $_->who_class,
@@ -40,10 +40,11 @@ sub dispatch_channels {
 }
 
 sub dispatch_channel {
-    my $channel_name = shift || param('channel') or die "missing channel name";
+    my $channel_name = param('channel') or die "missing channel name";
 
-    my $channel = server->get_channel($channel_name);
+    my $channel = server->get_channel(decode_utf8 $channel_name);
     $channel->clear_unread;
+
     render_channel($channel);
 }
 
@@ -56,7 +57,10 @@ sub post_dispatch_channel {
 }
 
 sub dispatch_keyword {
-    dispatch_channel(server->keyword_channel);
+    my $channel = server->keyword_channel;
+    $channel->clear_unread;
+
+    render_channel($channel);
 }
 
 1;
