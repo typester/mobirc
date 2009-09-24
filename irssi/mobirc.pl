@@ -140,7 +140,7 @@ sub irssi_own_public {
 sub irssi_join {
     my ($server, $channel, $nick, $address) = @_;
 
-    $channel = $mobirc->get_channel(U normalize_channel_name($channel));
+    $channel = normalize_channel_name(U $channel);
 
     unless ($server->{nick} eq $nick) {
         add_message( $channel, undef, "$nick joined", 'join' );
@@ -173,7 +173,7 @@ sub irssi_topic {
         or return;
     $channel->topic(U $topic);
 
-    add_message( $channel, undef, "$nick set topic: $topic", 'topic' );
+    add_message( $channel->name, undef, "$nick set topic: $topic", 'topic' );
 }
 
 sub irssi_irc_action {
