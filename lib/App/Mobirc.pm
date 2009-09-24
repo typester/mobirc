@@ -3,7 +3,7 @@ use Mouse;
 with 'App::Mobirc::Role::Plaggable';
 use 5.00800;
 use Scalar::Util qw/blessed/;
-use POE;
+use AnyEvent;
 use App::Mobirc::Util;
 use UNIVERSAL::require;
 use Carp;
@@ -72,7 +72,7 @@ sub run {
     # POE::Sugar::Args => Devel::Caller::Perl => DB => DB::catch(do not catch here)
     $SIG{INT} = sub { die "SIGINT\n" };
 
-    $poe_kernel->run();
+    AnyEvent->condvar->wait;
 }
 
 no Mouse; __PACKAGE__->meta->make_immutable;

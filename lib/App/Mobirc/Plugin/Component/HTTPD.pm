@@ -8,6 +8,7 @@ use App::Mobirc::Web::Handler;
 
 use HTTP::Engine;
 use HTTP::Engine::Middleware;
+use Plack::Loader;
 
 use Mouse::Util::TypeConstraints;
 use JSON ();
@@ -49,19 +50,24 @@ hook run_component => sub {
     $mw->install(@{ $self->middlewares });
     $request_handler = $mw->handler( $request_handler );
 
-    HTTP::Engine->new(
+    my $engine = HTTP::Engine->new(
         interface => {
-            module => 'POE',
+            module => 'PSGI',
             args   => {
                 host  => $self->address,
                 port  => $self->port,
-                alias => 'mobirc_httpd',
             },
             request_handler => $request_handler,
         }
-    )->run;
+    );
 
-    print "running your httpd at http://localhost:@{[ $self->port ]}/\n";
+    local $SIG{__WARN__};
+    if ($INC{'Irssi.pm'}) {
+        $SIG{__WARN__} = sub { Irssi::print($_[0]) };
+    }
+
+    my $impl = Plack::Loader->load('AnyEvent', %$self );
+    $impl->run(sub { $engine->run(@_) });
 };
 
 no Mouse;

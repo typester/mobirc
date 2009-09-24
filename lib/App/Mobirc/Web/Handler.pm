@@ -118,7 +118,7 @@ sub process_request_noauth {
             return HTTP::Engine::Response->new(
                 status => 302,
                 headers => {
-                    Location => '/account/login?return=' . uri_escape($req->request_uri)
+                    Location => '/account/login?return=' . uri_escape($req->path || '/')
                 }
             );
         }
