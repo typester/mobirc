@@ -56,6 +56,7 @@ if (Irssi::settings_get_bool('mobirc_auto_start')) {
 sub bind_signal {
     my $sub = __PACKAGE__->can(shift) or return sub {};
 
+    our $mobirc;
     return sub {
         return unless $mobirc;
         $sub->(@_);
