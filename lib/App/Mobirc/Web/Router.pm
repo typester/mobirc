@@ -19,4 +19,6 @@ connect 'iphone/:action'           => { controller => 'IPhone', };
 connect 'ajax/:action'             => { controller => 'Ajax' };
 connect 'mobile/:action'           => { controller => 'Mobile' };
 
+connect 'api/:action' => { controller => 'API' };
+
 1;
