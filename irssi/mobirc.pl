@@ -38,6 +38,15 @@ Irssi::signal_add("message $_" => bind_signal("irssi_$_"))
 Irssi::signal_add("message irc $_" => bind_signal("irssi_irc_$_"))
     for qw/op_public own_wall own_action action own_notice notice own_ctcp ctcp/;
 
+our $last_row;
+Irssi::signal_add('print text' => sub {
+    my ($dest, $text, $stripped) = @_;
+
+    if ($dest->{level} & MSGLEVEL_HILIGHT) {
+        App::Mobirc::Model::Channel->update_keyword_buffer($last_row)
+                if $mobirc && $last_row;
+    }
+});
 
 # autostart
 if (Irssi::settings_get_bool('mobirc_auto_start')) {
@@ -48,6 +57,7 @@ sub bind_signal {
     my $sub = __PACKAGE__->can(shift) or return sub {};
 
     return sub {
+        return unless $mobirc;
         $sub->(@_);
     };
 }
@@ -124,11 +134,11 @@ sub add_message {
         class => $class,
     );
     $channel->add_message($message);
+    $last_row = $message;
 }
 
 sub irssi_public {
     my ($server, $msg, $nick, $address, $target) = @_;
-
     add_message($target, $nick, $msg, 'public');
 }
 
